@@ -1,0 +1,23 @@
+{
+  "name": "jest-learning",
+  "version": "1.0.0",
+  "description": "Jest learning project =====================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tothricsaj/jest-learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tothricsaj/jest-learning/issues"
+  },
+  "homepage": "https://github.com/tothricsaj/jest-learning#readme",
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
