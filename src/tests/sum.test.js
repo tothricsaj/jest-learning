@@ -12,7 +12,6 @@ test('object assignment', () => {
     expect(data).toEqual({one: 1, two: 2});
     expect(arr).toEqual(['sas', 'kacsa']);
 });
-*/
 
 test('null', () => {
     const n = null;
@@ -30,4 +29,16 @@ test('zero', () => {
   expect(z).not.toBeUndefined();
   expect(z).not.toBeTruthy();
   expect(z).toBeFalsy();
+});
+*/
+
+function compileAndroidCode() {
+    throw new Error('You are using wrong JDK');
+}
+
+test('compiling android goes as expected', () => {
+    expect(compileAndroidCode).toThrow();
+    expect(compileAndroidCode).toThrow(Error);
+    expect(compileAndroidCode).toThrow('You are using wrong JDK');
+    expect(compileAndroidCode).toThrow(/JDK/);
 });
