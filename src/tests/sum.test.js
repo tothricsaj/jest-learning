@@ -52,11 +52,14 @@ function fetchData(callback) {
 
     let data = arr[Math.floor(Math.random()*3)];
     console.log(data);
+    console.log('foo bar');
     callback(data);
 }
 
 test('tha data is peanut butter', done => {
     function callback(data) {
+        expect(data).toBeTruthy();
+        expect((typeof data)).toBe('string');
         expect(data).toBe('peanut butter');
         // expect(data.toBe('little sun'));
         done();
