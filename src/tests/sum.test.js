@@ -30,7 +30,6 @@ test('zero', () => {
   expect(z).not.toBeTruthy();
   expect(z).toBeFalsy();
 });
-*/
 
 function compileAndroidCode() {
     throw new Error('You are using wrong JDK');
@@ -41,4 +40,27 @@ test('compiling android goes as expected', () => {
     expect(compileAndroidCode).toThrow(Error);
     expect(compileAndroidCode).toThrow('You are using wrong JDK');
     expect(compileAndroidCode).toThrow(/JDK/);
+});
+*/
+
+function fetchData(callback) {
+    let arr = [
+        'peanut butter',
+        'little sun',
+        'flower smile'
+    ];
+
+    let data = arr[Math.floor(Math.random()*3)];
+    console.log(data);
+    callback(data);
+}
+
+test('tha data is peanut butter', done => {
+    function callback(data) {
+        expect(data).toBe('peanut butter');
+        // expect(data.toBe('little sun'));
+        done();
+    }
+
+    fetchData(callback);
 });
