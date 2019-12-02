@@ -41,7 +41,6 @@ test('compiling android goes as expected', () => {
     expect(compileAndroidCode).toThrow('You are using wrong JDK');
     expect(compileAndroidCode).toThrow(/JDK/);
 });
-*/
 
 function fetchData(callback) {
     let arr = [
@@ -66,4 +65,21 @@ test('tha data is peanut butter', done => {
     }
 
     fetchData(callback);
+});
+*/
+let fetchData = function() {
+    return new Promise((resolve, reject) => {
+        resolve('peanut butter');
+
+        if(Math.floor(Math.random() * 2) === 1) reject('It is zero');
+    });
+}
+test('Promise peanut butter', () => {
+    return fetchData().then(data => {
+        expect(data).toBe('peanut butter');
+    });
+});
+
+test('promise with fail', () => {
+    return expect(fetchData()).rejects.toMatch('It is zero');
 });
