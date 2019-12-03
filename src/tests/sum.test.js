@@ -92,9 +92,11 @@ function beforeTest(counter) {
     switch(counter) {
         case 1:
             msg1 = 'first test before';
+            console.log(msg1);
             return;
         case 2:
             msg2 = 'second test before';
+            console.log(msg2);
             return;
         default:
             return 'no case'
@@ -105,9 +107,11 @@ function afterTest(counter) {
     switch(counter) {
         case 1:
             c++;
+            console.log(c);
             return;
         case 2:
             c++
+            console.log(c);
             return;
         default:
             return 'no case'
