@@ -84,16 +84,17 @@ test('promise with fail', () => {
 });
 */
 
-let msg;
+let msg1;
+let msg2;
 let c = 1;
 
 function beforeTest(counter) {
     switch(counter) {
         case 1:
-            msg = 'first test before';
+            msg1 = 'first test before';
             return;
         case 2:
-            msg = 'second test before';
+            msg2 = 'second test before';
             return;
         default:
             return 'no case'
@@ -103,9 +104,11 @@ function beforeTest(counter) {
 function afterTest(counter) {
     switch(counter) {
         case 1:
-            return '1. test after';
+            c++;
+            return;
         case 2:
-            return '2. test after';
+            c++
+            return;
         default:
             return 'no case'
     }
@@ -122,6 +125,14 @@ function dropMsg(msg) {
     }
 }
 
+beforeEach(() => {
+    beforeTest(c);
+});
 
+test('With msg1', () => {
+    expect(dropMsg(msg1)).toBe('This is the first test');
+});
 
-
+test('With msg2', () => {
+    expect(dropMsg(msg2)).toBe('This is the first test');
+});
