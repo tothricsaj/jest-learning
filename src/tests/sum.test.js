@@ -66,7 +66,6 @@ test('tha data is peanut butter', done => {
 
     fetchData(callback);
 });
-*/
 let fetchData = function() {
     return new Promise((resolve, reject) => {
         resolve('peanut butter');
@@ -83,3 +82,29 @@ test('Promise peanut butter', () => {
 test('promise with fail', () => {
     return expect(fetchData()).rejects.toMatch('It is zero');
 });
+*/
+
+let c = 1;
+
+function beforeTest(counter) {
+    switch(counter) {
+        case 1:
+            return 'first test before';
+        case 2:
+            return 'second test before';
+        default:
+            return 'no case'
+    }
+}
+
+function afterTest() {
+    switch(counter) {
+        case 1:
+            return '1. test after';
+        case 2:
+            return '2. test after';
+        default:
+            return 'no case'
+    }
+
+}
