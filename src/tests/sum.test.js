@@ -84,20 +84,23 @@ test('promise with fail', () => {
 });
 */
 
+let msg;
 let c = 1;
 
 function beforeTest(counter) {
     switch(counter) {
         case 1:
-            return 'first test before';
+            msg = 'first test before';
+            return;
         case 2:
-            return 'second test before';
+            msg = 'second test before';
+            return;
         default:
             return 'no case'
     }
 }
 
-function afterTest() {
+function afterTest(counter) {
     switch(counter) {
         case 1:
             return '1. test after';
@@ -106,5 +109,19 @@ function afterTest() {
         default:
             return 'no case'
     }
-
 }
+
+function dropMsg(msg) {
+    switch(msg) {
+        case 'first test before':
+            return 'This is the first test';
+        case 'second test before':
+            return 'This is the second one';
+        default:
+            return 'no case';
+    }
+}
+
+
+
+
