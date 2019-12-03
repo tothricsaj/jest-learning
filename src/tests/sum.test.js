@@ -129,10 +129,14 @@ beforeEach(() => {
     beforeTest(c);
 });
 
+afterEach(() => {
+    afterTest(c);
+});
+
 test('With msg1', () => {
     expect(dropMsg(msg1)).toBe('This is the first test');
 });
 
 test('With msg2', () => {
-    expect(dropMsg(msg2)).toBe('This is the first test');
+    expect(dropMsg(msg2)).toBe('This is the second one');
 });
