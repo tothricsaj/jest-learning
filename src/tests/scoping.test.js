@@ -2,20 +2,22 @@ let counter = 0;
 let city;
 let food;
 
-function initCity(counter) {
+function setCity() {
     switch(counter) {
         case 0:
             city = 'Szeged'; // Szeged is a town, but the best all of the world
+            counter++;
             return;
         case 1:
             city = 'Budapest';
+            counter++; // it is not too necessery in this case
             return;
         default:
             return 'no city';
     }
 }
 
-function initFood(counter) {
+function setFood() {
     switch(counter) {
         case 0:
             food = 'fish soup';
@@ -31,18 +33,35 @@ function cityFunc() {
     return city;
 }
 
-function foodFunc() {
-    return food;
+function foodFunc(city, food) {
+    return city + ' -> ' + food;
 }
 
-beforeAll(() => {
-    
+beforeEach(() => {
+    setCity();
 });
 
-afterAll(() => {
-
+test('City check...Szeged', () => {
+    expect(cityFunc()).toBe('Szeged');
 });
+
+test('City check...BP', () => {
+    expect(cityFunc()).toBe('Budapest');
+});
+
 
 describe('scope staff', () => {
+    counter = 0;
+    beforeEach(() => {
+        setCity();
+        setFood(city, food);
+    });
 
+    test('food in Szeged', () => {
+        expect(foodFunc(city, food)).toBe('Szeged -> fish soup');
+    });
+
+    test('food in Bp', () => {
+        expect(foodFunc(city, food)).toBe('Budapest -> steak');
+    });
 });
