@@ -82,7 +82,6 @@ test('Promise peanut butter', () => {
 test('promise with fail', () => {
     return expect(fetchData()).rejects.toMatch('It is zero');
 });
-*/
 
 let msg1;
 let msg2;
@@ -118,6 +117,16 @@ function afterTest(counter) {
     }
 }
 
+
+beforeEach(() => {
+    beforeTest(c);
+});
+
+afterEach(() => {
+    afterTest(c);
+});
+
+// this the will be tested
 function dropMsg(msg) {
     switch(msg) {
         case 'first test before':
@@ -128,19 +137,42 @@ function dropMsg(msg) {
             return 'no case';
     }
 }
+*/
 
-beforeEach(() => {
-    beforeTest(c);
+let msg; 
+
+function beforAllTest() {
+    msg = 'Having set before every test.....';
+    console.log(msg);
+}
+
+function afterAllTest() {
+   msg = 'After every test!';
+   console.log(msg);
+}
+
+// this the will be tested
+function dropMsg(msg) {
+    /*
+      I know that this function is nonsense....It is a learning project!
+    */
+
+    return msg;
+}
+
+beforeAll(() => {
+    return beforAllTest();
 });
 
-afterEach(() => {
-    afterTest(c);
+afterAll(() => {
+    return afterAllTest();
 });
 
-test('With msg1', () => {
-    expect(dropMsg(msg1)).toBe('This is the first test');
+
+test('With msg', () => {
+    expect(dropMsg(msg)).toBe('Having set before every test.....');
 });
 
-test('With msg2', () => {
-    expect(dropMsg(msg2)).toBe('This is the second one');
+test('With msg other', () => {
+    expect(dropMsg(msg)).toBe('Having set before every test.....');
 });
