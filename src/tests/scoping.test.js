@@ -3,6 +3,8 @@ let city;
 let food;
 
 function setCity() {
+    console.log(`counter in the setCity -> ${counter}`);
+    if(counter === 2) counter = 0;
     switch(counter) {
         case 0:
             city = 'Szeged'; // Szeged is a town, but the best all of the world
@@ -13,19 +15,21 @@ function setCity() {
             counter++; // it is not too necessery in this case
             return;
         default:
-            return 'no city';
+            city = 'no city';
+            return;
     }
 }
 
 function setFood() {
     switch(counter) {
-        case 0:
+        case 1:
             food = 'fish soup';
             return;
-        case 1:
+        case 2:
             food = 'steak';
         default:
-            return 'no food';
+            food = 'no food';
+            return ;
     }
 }
 
@@ -34,7 +38,7 @@ function cityFunc() {
 }
 
 function foodFunc(city, food) {
-    return city + ' -> ' + food;
+    return 'kitty';
 }
 
 beforeEach(() => {
@@ -51,17 +55,16 @@ test('City check...BP', () => {
 
 
 describe('scope staff', () => {
-    counter = 0;
     beforeEach(() => {
         setCity();
         setFood(city, food);
     });
 
     test('food in Szeged', () => {
-        expect(foodFunc(city, food)).toBe('Szeged -> fish soup');
+        expect(foodFunc(city, food)).toBe('kitty');
     });
 
     test('food in Bp', () => {
-        expect(foodFunc(city, food)).toBe('Budapest -> steak');
+        expect(foodFunc(city, food)).toBe('kitty');
     });
 });
