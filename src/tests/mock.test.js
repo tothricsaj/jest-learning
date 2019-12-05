@@ -16,5 +16,6 @@ test('mock practice', () => {
 
     console.log(mockCallback.mock.results[1]);
     console.log(mockCallback.mock);
+    console.log(mockCallback);
 });
 
