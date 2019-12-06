@@ -38,3 +38,11 @@ test('should fetch users', () => {
 
     return User.all().then(data => expect(data).toEqual(users));
 });
+
+let myMockFn = jest
+    .fn(() => 'default')
+    .mockImplementationOnce(() => 'first call')
+    .mockImplementationOnce(() => 'second call')
+;
+
+console.log(myMockFn(), myMockFn(), myMockFn(), myMockFn());
