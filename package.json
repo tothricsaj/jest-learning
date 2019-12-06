@@ -1,5 +1,9 @@
 {
   "name": "jest-learning",
+   "jest": {
+    "verbose": true,
+     "moduleDirectories": ["node_modules"]
+   },
   "version": "1.0.0",
   "description": "Jest learning project =====================",
   "main": "index.js",

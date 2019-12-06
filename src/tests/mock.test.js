@@ -1,11 +1,6 @@
-import axios from 'axios';
+axios = require('axios');
 
-class User {
-    static all() {
-        return axios.get('/user.json').then(resp => resp.data);
-    }
-}
-
+/*
 function trzForEach(items, callback) {
     for(let index=0; index<items.length; index++) {
         callback(items[index]);
@@ -26,4 +21,20 @@ test('mock practice', () => {
     console.log(mockCallback.mock);
     console.log(mockCallback);
 });
+*/
 
+class User {
+    static all() {
+        return axios.get('/user.json').then(resp => resp.data);
+    }
+}
+
+jest.mock('axios');
+
+test('should fetch users', () => {
+    const users = [{name: 'Bob'}];
+    const resp = {data: users};
+    axios.get.mockResolvedValue(resp);
+
+    return User.all().then(data => expect(data).toEqual(users));
+});
