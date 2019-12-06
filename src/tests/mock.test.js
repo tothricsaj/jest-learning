@@ -1,3 +1,11 @@
+import axios from 'axios';
+
+class User {
+    static all() {
+        return axios.get('/user.json').then(resp => resp.data);
+    }
+}
+
 function trzForEach(items, callback) {
     for(let index=0; index<items.length; index++) {
         callback(items[index]);
